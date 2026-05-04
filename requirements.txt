@@ -1,0 +1,22 @@
+# TikTok Auto Poster Dependencies
+# These are all the Python libraries needed to run the automated TikTok posting script
+
+# Core video downloading and processing
+yt-dlp==2023.12.30
+
+# Task scheduling for automated posting
+APScheduler==3.10.4
+
+# HTTP requests for TikTok API
+requests==2.31.0
+
+# Environment variable management
+python-dotenv==1.0.0
+
+# Email notifications via Gmail
+# Note: smtplib is built into Python standard library, no additional package needed
+
+# Additional utilities that may be needed
+# These provide better error handling and system compatibility
+tzlocal==5.2  # For timezone handling
+pytz==2023.3  # For timezone conversions
