@@ -4,241 +4,488 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Schedulify — Automate Your TikTok Posting</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Bricolage+Grotesque:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Bricolage+Grotesque:wght@500;700;800&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --bg: #f7fbff;
-    --white: #ffffff;
-    --blue: #3b82f6;
-    --blue-light: #eff6ff;
-    --blue-mid: #dbeafe;
-    --blue-dark: #1d4ed8;
-    --text: #0f172a;
-    --muted: #64748b;
-    --border: #e2e8f0;
-    --success: #22c55e;
-  }
-  body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.6; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f0f7ff;
+  --white:#ffffff;
+  --blue:#2563eb;
+  --blue-h:#1d4ed8;
+  --blue-l:#eff6ff;
+  --blue-b:#dbeafe;
+  --text:#0f172a;
+  --sub:#475569;
+  --muted:#94a3b8;
+  --border:#e2e8f0;
+  --radius:10px;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased}
 
-  /* NAV */
-  nav { display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 5rem; background: var(--white); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
-  .logo { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 1.3rem; color: var(--text); letter-spacing: -0.5px; text-decoration: none; }
-  .logo span { color: var(--blue); }
-  nav ul { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
-  nav a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
-  nav a:hover { color: var(--text); }
-  .nav-cta { background: var(--blue) !important; color: white !important; padding: 0.5rem 1.25rem; border-radius: 8px; font-weight: 500; }
-  .nav-cta:hover { background: var(--blue-dark) !important; }
+/* NAV */
+nav{
+  position:sticky;top:0;z-index:200;
+  background:rgba(255,255,255,0.92);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 4rem;height:64px;
+}
+.logo{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:1.25rem;color:var(--text);text-decoration:none;letter-spacing:-0.5px}
+.logo b{color:var(--blue)}
+.nav-links{display:flex;align-items:center;gap:0.25rem;list-style:none}
+.nav-links a{color:var(--sub);text-decoration:none;font-size:0.875rem;padding:0.4rem 0.75rem;border-radius:6px;transition:color .15s,background .15s}
+.nav-links a:hover{color:var(--text);background:#f1f5f9}
+.nav-links .cta{background:var(--blue);color:#fff !important;padding:0.45rem 1.1rem;border-radius:8px;font-weight:500}
+.nav-links .cta:hover{background:var(--blue-h) !important}
 
-  /* HERO */
-  .hero { text-align: center; padding: 6rem 2rem 5rem; max-width: 700px; margin: 0 auto; }
-  .badge { display: inline-block; background: var(--blue-light); color: var(--blue-dark); border: 1px solid var(--blue-mid); padding: 0.3rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 500; margin-bottom: 1.75rem; }
-  h1 { font-family: 'Bricolage Grotesque', sans-serif; font-size: clamp(2.2rem, 5vw, 3.6rem); font-weight: 700; line-height: 1.1; letter-spacing: -1.5px; margin-bottom: 1.25rem; }
-  h1 span { color: var(--blue); }
-  .hero-sub { font-size: 1.05rem; color: var(--muted); max-width: 460px; margin: 0 auto 2.5rem; line-height: 1.7; }
-  .hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+/* HERO */
+.hero{
+  max-width:860px;margin:0 auto;
+  padding:7rem 2rem 5.5rem;
+  text-align:center;
+}
+.hero-pill{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  background:var(--white);border:1px solid var(--blue-b);
+  color:var(--blue);font-size:0.78rem;font-weight:600;
+  padding:0.35rem 1rem;border-radius:100px;margin-bottom:2rem;
+  letter-spacing:0.3px;
+}
+.hero-pill span{width:6px;height:6px;border-radius:50%;background:var(--blue);display:inline-block}
+.hero h1{
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-weight:800;font-size:clamp(2.6rem,5.5vw,4rem);
+  line-height:1.06;letter-spacing:-2px;
+  color:var(--text);margin-bottom:1.4rem;
+}
+.hero h1 em{font-style:normal;color:var(--blue)}
+.hero p{
+  font-size:1.075rem;color:var(--sub);
+  max-width:500px;margin:0 auto 2.75rem;
+  line-height:1.75;font-weight:400;
+}
+.hero-btns{display:flex;gap:0.85rem;justify-content:center;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;gap:0.4rem;
+  padding:0.75rem 1.75rem;border-radius:9px;
+  font-size:0.925rem;font-weight:500;
+  text-decoration:none;cursor:pointer;
+  border:none;font-family:'Inter',sans-serif;
+  transition:all .15s;
+}
+.btn-blue{background:var(--blue);color:#fff}
+.btn-blue:hover{background:var(--blue-h);transform:translateY(-1px);box-shadow:0 4px 14px rgba(37,99,235,.35)}
+.btn-outline{background:var(--white);color:var(--text);border:1px solid var(--border)}
+.btn-outline:hover{border-color:var(--blue);color:var(--blue)}
 
-  /* BUTTONS */
-  .btn-primary { background: var(--blue); color: white; padding: 0.8rem 2rem; border-radius: 8px; font-size: 0.95rem; font-weight: 500; text-decoration: none; transition: background 0.2s, transform 0.2s; cursor: pointer; border: none; font-family: 'Inter', sans-serif; display: inline-block; }
-  .btn-primary:hover { background: var(--blue-dark); transform: translateY(-1px); }
-  .btn-ghost { background: var(--white); color: var(--text); padding: 0.8rem 2rem; border-radius: 8px; font-size: 0.95rem; font-weight: 500; text-decoration: none; border: 1px solid var(--border); transition: border-color 0.2s, color 0.2s; display: inline-block; }
-  .btn-ghost:hover { border-color: var(--blue); color: var(--blue); }
+/* SOCIAL PROOF */
+.proof{
+  display:flex;justify-content:center;align-items:center;gap:0.6rem;
+  margin-top:2.5rem;font-size:0.82rem;color:var(--muted);
+}
+.proof-dots{display:flex;gap:-4px}
+.proof-dot{width:24px;height:24px;border-radius:50%;border:2px solid var(--white);background:var(--blue-l);margin-left:-6px;font-size:9px;display:flex;align-items:center;justify-content:center;font-weight:600;color:var(--blue)}
 
-  /* STATS */
-  .stats { display: flex; justify-content: center; gap: 4rem; padding: 3rem 2rem; background: var(--white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); flex-wrap: wrap; }
-  .stat-num { font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.9rem; font-weight: 700; color: var(--blue); }
-  .stat-label { font-size: 0.85rem; color: var(--muted); margin-top: 0.2rem; }
+/* STATS BAR */
+.stats-bar{
+  background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  display:flex;justify-content:center;gap:0;
+}
+.stat{
+  display:flex;flex-direction:column;align-items:center;
+  padding:2.25rem 4rem;border-right:1px solid var(--border);
+}
+.stat:last-child{border-right:none}
+.stat-n{font-family:'Bricolage Grotesque',sans-serif;font-size:2rem;font-weight:800;color:var(--blue);letter-spacing:-1px}
+.stat-l{font-size:0.8rem;color:var(--sub);margin-top:0.2rem;text-align:center}
 
-  /* SECTIONS */
-  .section { padding: 5rem; max-width: 1080px; margin: 0 auto; }
-  .section-label { font-size: 0.75rem; font-weight: 600; color: var(--blue); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.75rem; }
-  h2 { font-family: 'Bricolage Grotesque', sans-serif; font-size: clamp(1.6rem, 3vw, 2.3rem); font-weight: 700; letter-spacing: -0.75px; line-height: 1.15; margin-bottom: 0.75rem; }
-  .section-sub { color: var(--muted); font-size: 1rem; max-width: 460px; margin-bottom: 3rem; line-height: 1.7; }
+/* SECTIONS */
+.section{max-width:1080px;margin:0 auto;padding:6rem 2rem}
+.section-badge{
+  display:inline-block;
+  font-size:0.72rem;font-weight:700;
+  color:var(--blue);letter-spacing:2px;text-transform:uppercase;
+  background:var(--blue-l);border:1px solid var(--blue-b);
+  padding:0.3rem 0.85rem;border-radius:100px;margin-bottom:1.25rem;
+}
+.section h2{
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-size:clamp(1.75rem,3.5vw,2.5rem);
+  font-weight:800;letter-spacing:-1px;line-height:1.1;
+  margin-bottom:0.85rem;
+}
+.section-sub{font-size:1rem;color:var(--sub);max-width:480px;line-height:1.75;margin-bottom:3.5rem}
 
-  /* FEATURES */
-  .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; }
-  .feature-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 1.75rem; transition: border-color 0.2s, transform 0.2s; }
-  .feature-card:hover { border-color: var(--blue); transform: translateY(-2px); }
-  .feature-icon { width: 36px; height: 36px; border-radius: 8px; background: var(--blue-light); display: flex; align-items: center; justify-content: center; font-size: 16px; margin-bottom: 1rem; }
-  .feature-card h3 { font-family: 'Bricolage Grotesque', sans-serif; font-size: 0.95rem; font-weight: 600; margin-bottom: 0.4rem; }
-  .feature-card p { font-size: 0.875rem; color: var(--muted); line-height: 1.6; }
+/* FEATURES */
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.feat{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:14px;padding:1.75rem;
+  transition:border-color .2s,box-shadow .2s,transform .2s;
+}
+.feat:hover{border-color:var(--blue);box-shadow:0 4px 20px rgba(37,99,235,.09);transform:translateY(-3px)}
+.feat-icon{
+  width:40px;height:40px;border-radius:10px;
+  background:var(--blue-l);border:1px solid var(--blue-b);
+  display:flex;align-items:center;justify-content:center;
+  font-size:17px;margin-bottom:1.1rem;
+}
+.feat h3{font-family:'Bricolage Grotesque',sans-serif;font-size:0.95rem;font-weight:700;margin-bottom:0.45rem;letter-spacing:-0.3px}
+.feat p{font-size:0.85rem;color:var(--sub);line-height:1.65}
 
-  /* STEPS */
-  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 3rem; }
-  .step-num { font-family: 'Bricolage Grotesque', sans-serif; font-size: 0.8rem; font-weight: 600; color: var(--blue); background: var(--blue-light); width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
-  .step h3 { font-family: 'Bricolage Grotesque', sans-serif; font-size: 0.95rem; font-weight: 600; margin-bottom: 0.4rem; }
-  .step p { font-size: 0.875rem; color: var(--muted); line-height: 1.6; }
+/* HOW IT WORKS */
+.how-bg{background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;margin-top:1rem}
+.step{position:relative}
+.step-n{
+  font-family:'Bricolage Grotesque',sans-serif;
+  width:36px;height:36px;border-radius:50%;
+  background:var(--blue);color:#fff;
+  font-size:0.85rem;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:1rem;flex-shrink:0;
+}
+.step h3{font-family:'Bricolage Grotesque',sans-serif;font-size:0.95rem;font-weight:700;margin-bottom:0.4rem;letter-spacing:-0.3px}
+.step p{font-size:0.85rem;color:var(--sub);line-height:1.65}
 
-  /* PRICING */
-  .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
-  .plan { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; position: relative; }
-  .plan.featured { border: 2px solid var(--blue); }
-  .plan-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--blue); color: white; font-size: 0.72rem; font-weight: 600; padding: 0.2rem 0.75rem; border-radius: 100px; white-space: nowrap; }
-  .plan-name { font-size: 0.8rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.75rem; }
-  .plan-price { font-family: 'Bricolage Grotesque', sans-serif; font-size: 2.4rem; font-weight: 700; letter-spacing: -1px; }
-  .plan-period { font-size: 0.85rem; color: var(--muted); margin-bottom: 1.5rem; }
-  .plan ul { list-style: none; margin-bottom: 1.5rem; }
-  .plan ul li { font-size: 0.875rem; color: var(--muted); padding: 0.4rem 0; border-bottom: 1px solid var(--border); display: flex; gap: 0.5rem; align-items: center; }
-  .plan ul li::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--blue); flex-shrink: 0; }
-  .plan-btn { display: block; text-align: center; padding: 0.7rem; border-radius: 8px; font-size: 0.9rem; font-weight: 500; text-decoration: none; border: 1px solid var(--border); color: var(--text); transition: all 0.2s; cursor: pointer; background: var(--white); font-family: 'Inter', sans-serif; width: 100%; }
-  .plan.featured .plan-btn { background: var(--blue); color: white; border-color: var(--blue); }
-  .plan-btn:hover { border-color: var(--blue); color: var(--blue); }
-  .plan.featured .plan-btn:hover { background: var(--blue-dark); color: white; }
+/* PRICING */
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:1rem}
+.plan{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:14px;padding:2rem;position:relative;
+  display:flex;flex-direction:column;
+}
+.plan.pop{border:2px solid var(--blue);box-shadow:0 4px 24px rgba(37,99,235,.12)}
+.pop-badge{
+  position:absolute;top:-13px;left:50%;transform:translateX(-50%);
+  background:var(--blue);color:#fff;
+  font-size:0.72rem;font-weight:700;
+  padding:0.25rem 0.9rem;border-radius:100px;white-space:nowrap;letter-spacing:0.3px;
+}
+.plan-tier{font-size:0.75rem;font-weight:700;color:var(--sub);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:1rem}
+.plan-price{font-family:'Bricolage Grotesque',sans-serif;font-size:2.75rem;font-weight:800;letter-spacing:-2px;line-height:1}
+.plan-mo{font-size:0.85rem;color:var(--muted);margin:0.3rem 0 1.5rem}
+.plan-feats{list-style:none;margin-bottom:1.75rem;flex:1}
+.plan-feats li{
+  font-size:0.865rem;color:var(--sub);
+  padding:0.45rem 0;border-bottom:1px solid var(--border);
+  display:flex;align-items:center;gap:0.6rem;
+}
+.plan-feats li::before{
+  content:'';width:16px;height:16px;flex-shrink:0;border-radius:50%;
+  background:var(--blue-l);border:1.5px solid var(--blue);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2 6l3 3 5-5' stroke='%232563eb' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-size:10px;background-position:center;background-repeat:no-repeat;
+}
+.plan-btn{
+  display:block;text-align:center;
+  padding:0.75rem;border-radius:9px;
+  font-size:0.9rem;font-weight:500;
+  text-decoration:none;cursor:pointer;
+  border:1.5px solid var(--border);
+  color:var(--text);background:transparent;
+  font-family:'Inter',sans-serif;
+  transition:all .15s;width:100%;
+}
+.plan-btn:hover{border-color:var(--blue);color:var(--blue)}
+.plan.pop .plan-btn{background:var(--blue);color:#fff;border-color:var(--blue)}
+.plan.pop .plan-btn:hover{background:var(--blue-h)}
 
-  /* FOOTER */
-  footer { background: var(--white); border-top: 1px solid var(--border); padding: 2rem 5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-  footer p { font-size: 0.85rem; color: var(--muted); }
-  .footer-links { display: flex; gap: 2rem; }
-  footer a { font-size: 0.85rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
-  footer a:hover { color: var(--blue); }
+/* CTA BAND */
+.cta-band{
+  background:var(--blue);
+  padding:5rem 2rem;text-align:center;
+}
+.cta-band h2{
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-size:clamp(1.75rem,3.5vw,2.5rem);
+  font-weight:800;color:#fff;letter-spacing:-1px;
+  margin-bottom:0.85rem;
+}
+.cta-band p{color:rgba(255,255,255,.75);font-size:1rem;margin-bottom:2rem;max-width:420px;margin-left:auto;margin-right:auto}
+.btn-white{background:#fff;color:var(--blue)}
+.btn-white:hover{background:#f0f7ff}
 
-  /* MODAL */
-  .modal-overlay { position: fixed; inset: 0; background: rgba(15,23,42,0.5); z-index: 999; display: flex; align-items: center; justify-content: center; padding: 1rem; opacity: 0; visibility: hidden; transition: opacity 0.2s, visibility 0.2s; }
-  .modal-overlay.active { opacity: 1; visibility: visible; }
-  .modal { background: var(--white); border-radius: 16px; padding: 2.5rem; max-width: 420px; width: 100%; position: relative; transform: translateY(20px); transition: transform 0.2s; }
-  .modal-overlay.active .modal { transform: translateY(0); }
-  .modal-close { position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 1.2rem; color: var(--muted); cursor: pointer; padding: 0.25rem; line-height: 1; }
-  .modal-close:hover { color: var(--text); }
-  .modal h3 { font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.4rem; font-weight: 700; margin-bottom: 0.5rem; letter-spacing: -0.5px; }
-  .modal p { font-size: 0.9rem; color: var(--muted); margin-bottom: 1.5rem; line-height: 1.6; }
-  .form-group { margin-bottom: 1rem; }
-  .form-group label { display: block; font-size: 0.85rem; font-weight: 500; margin-bottom: 0.4rem; color: var(--text); }
-  .form-group input { width: 100%; padding: 0.7rem 1rem; border: 1px solid var(--border); border-radius: 8px; font-size: 0.9rem; font-family: 'Inter', sans-serif; color: var(--text); transition: border-color 0.2s; outline: none; }
-  .form-group input:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(59,130,246,0.1); }
-  .form-submit { width: 100%; padding: 0.8rem; background: var(--blue); color: white; border: none; border-radius: 8px; font-size: 0.95rem; font-weight: 500; cursor: pointer; font-family: 'Inter', sans-serif; transition: background 0.2s; margin-top: 0.5rem; }
-  .form-submit:hover { background: var(--blue-dark); }
-  .form-submit:disabled { opacity: 0.6; cursor: not-allowed; }
-  .success-msg { display: none; text-align: center; padding: 1rem; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; color: #15803d; font-size: 0.9rem; margin-top: 1rem; }
-  .success-msg.show { display: block; }
-  .modal-terms { font-size: 0.75rem; color: var(--muted); text-align: center; margin-top: 1rem; line-height: 1.5; }
-  .modal-terms a { color: var(--blue); text-decoration: none; }
+/* FOOTER */
+footer{
+  background:var(--white);border-top:1px solid var(--border);
+  padding:2.5rem 4rem;
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;
+}
+.footer-logo{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:1.1rem;color:var(--text);text-decoration:none}
+.footer-logo b{color:var(--blue)}
+footer p{font-size:0.82rem;color:var(--muted)}
+.footer-links{display:flex;gap:1.75rem}
+.footer-links a{font-size:0.82rem;color:var(--sub);text-decoration:none;transition:color .15s}
+.footer-links a:hover{color:var(--blue)}
 
-  @media (max-width: 768px) {
-    nav { padding: 1rem 1.5rem; }
-    nav ul { display: none; }
-    .hero { padding: 4rem 1.5rem 3rem; }
-    .section { padding: 3rem 1.5rem; }
-    .stats { gap: 2rem; padding: 2rem 1.5rem; }
-    footer { padding: 1.5rem; flex-direction: column; align-items: flex-start; }
-  }
+/* MODAL */
+.overlay{
+  position:fixed;inset:0;z-index:999;
+  background:rgba(15,23,42,.55);
+  backdrop-filter:blur(4px);
+  display:flex;align-items:center;justify-content:center;
+  padding:1rem;
+  opacity:0;visibility:hidden;
+  transition:opacity .2s,visibility .2s;
+}
+.overlay.on{opacity:1;visibility:visible}
+.modal{
+  background:var(--white);border-radius:16px;
+  padding:2.5rem;max-width:440px;width:100%;
+  position:relative;
+  transform:translateY(16px) scale(0.98);
+  transition:transform .2s;
+  box-shadow:0 20px 60px rgba(0,0,0,.15);
+}
+.overlay.on .modal{transform:translateY(0) scale(1)}
+.modal-x{
+  position:absolute;top:1rem;right:1rem;
+  background:var(--bg);border:none;border-radius:6px;
+  width:30px;height:30px;font-size:1rem;color:var(--sub);
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:background .15s,color .15s;
+}
+.modal-x:hover{background:var(--border);color:var(--text)}
+.modal-logo{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:1rem;color:var(--text);margin-bottom:1.25rem}
+.modal-logo b{color:var(--blue)}
+.modal h3{font-family:'Bricolage Grotesque',sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:-0.5px;margin-bottom:0.4rem}
+.modal .sub{font-size:0.875rem;color:var(--sub);margin-bottom:1.75rem;line-height:1.6}
+.field{margin-bottom:1rem}
+.field label{display:block;font-size:0.82rem;font-weight:600;color:var(--text);margin-bottom:0.4rem}
+.field input{
+  width:100%;padding:0.7rem 0.9rem;
+  border:1.5px solid var(--border);border-radius:8px;
+  font-size:0.9rem;font-family:'Inter',sans-serif;
+  color:var(--text);background:var(--white);
+  outline:none;transition:border-color .15s,box-shadow .15s;
+}
+.field input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(37,99,235,.1)}
+.field input::placeholder{color:var(--muted)}
+.modal-btn{
+  width:100%;margin-top:0.5rem;
+  padding:0.8rem;background:var(--blue);color:#fff;
+  border:none;border-radius:9px;
+  font-size:0.95rem;font-weight:600;
+  font-family:'Inter',sans-serif;cursor:pointer;
+  transition:background .15s,transform .15s;
+}
+.modal-btn:hover{background:var(--blue-h);transform:translateY(-1px)}
+.modal-btn:disabled{opacity:.6;cursor:not-allowed;transform:none}
+.modal-note{font-size:0.75rem;color:var(--muted);text-align:center;margin-top:1rem;line-height:1.5}
+.modal-note a{color:var(--blue);text-decoration:none}
+.success{
+  display:none;text-align:center;padding:1.25rem;
+  background:#f0fdf4;border:1px solid #bbf7d0;
+  border-radius:10px;margin-top:1rem;
+}
+.success.on{display:block}
+.success p{font-size:0.9rem;color:#15803d;font-weight:500}
+
+/* DIVIDER */
+.divider{height:1px;background:var(--border);margin:0 auto;max-width:1080px}
+
+@media(max-width:900px){
+  .features{grid-template-columns:repeat(2,1fr)}
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .plans{grid-template-columns:1fr}
+  .stat{padding:1.5rem 2rem}
+}
+@media(max-width:640px){
+  nav{padding:0 1.25rem}
+  .nav-links li:not(:last-child){display:none}
+  .hero{padding:4.5rem 1.25rem 3.5rem}
+  .section{padding:4rem 1.25rem}
+  .features{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  .stats-bar{flex-wrap:wrap}
+  .stat{border-right:none;border-bottom:1px solid var(--border);width:50%}
+  footer{padding:1.5rem 1.25rem;flex-direction:column;align-items:flex-start}
+  .cta-band{padding:3.5rem 1.25rem}
+}
 </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
-  <a href="index.html" class="logo">Schedulify<span>.</span></a>
-  <ul>
+  <a href="index.html" class="logo">Schedulify<b>.</b></a>
+  <ul class="nav-links">
     <li><a href="#features">Features</a></li>
     <li><a href="#how">How it works</a></li>
     <li><a href="#pricing">Pricing</a></li>
     <li><a href="mailto:developerinfoapplication@gmail.com">Contact</a></li>
-    <li><a href="#" class="nav-cta" onclick="openModal(); return false;">Get started</a></li>
+    <li><a href="#" class="cta" id="navCta">Get started free</a></li>
   </ul>
 </nav>
 
+<!-- HERO -->
 <div class="hero">
-  <div class="badge">TikTok Content Posting API — Verified</div>
-  <h1>Schedule your TikTok posts <span>automatically</span></h1>
-  <p class="hero-sub">Connect your TikTok account and let Schedulify handle your posting schedule. Set it once, run forever.</p>
-  <div class="hero-actions">
-    <button class="btn-primary" onclick="openModal()">Get started free</button>
-    <a href="#how" class="btn-ghost">See how it works</a>
+  <div class="hero-pill"><span></span> TikTok Content Posting API — Verified</div>
+  <h1>Post to TikTok<br><em>on autopilot.</em></h1>
+  <p>Connect your TikTok account and let Schedulify handle your posting schedule. Set it once, run forever — no manual uploads ever again.</p>
+  <div class="hero-btns">
+    <button class="btn btn-blue" id="heroCta">Get started free →</button>
+    <a href="#how" class="btn btn-outline">See how it works</a>
+  </div>
+  <div class="proof">
+    <div class="proof-dots">
+      <div class="proof-dot">A</div>
+      <div class="proof-dot">B</div>
+      <div class="proof-dot">C</div>
+      <div class="proof-dot">+</div>
+    </div>
+    <span>Join hundreds of creators automating their TikTok</span>
   </div>
 </div>
 
-<div class="stats">
-  <div><div class="stat-num">3x</div><div class="stat-label">More consistent posting</div></div>
-  <div><div class="stat-num">24/7</div><div class="stat-label">Fully automated</div></div>
-  <div><div class="stat-num">100%</div><div class="stat-label">TikTok API compliant</div></div>
-  <div><div class="stat-num">0</div><div class="stat-label">Manual uploads needed</div></div>
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat"><div class="stat-n">3x</div><div class="stat-l">More consistent posting</div></div>
+  <div class="stat"><div class="stat-n">24/7</div><div class="stat-l">Fully automated</div></div>
+  <div class="stat"><div class="stat-n">100%</div><div class="stat-l">TikTok API compliant</div></div>
+  <div class="stat"><div class="stat-n">0</div><div class="stat-l">Manual uploads needed</div></div>
 </div>
 
+<!-- FEATURES -->
 <div class="section" id="features">
-  <div class="section-label">Features</div>
-  <h2>Everything you need to automate your TikTok</h2>
-  <p class="section-sub">Connect once, post forever. Schedulify handles the entire workflow so you can focus on creating.</p>
-  <div class="features-grid">
-    <div class="feature-card">
-      <div class="feature-icon">⏰</div>
+  <div class="section-badge">Features</div>
+  <h2>Everything you need to<br>automate your TikTok</h2>
+  <p class="section-sub">Connect once, post forever. Schedulify handles the entire workflow so you can focus on what matters — creating content.</p>
+  <div class="features">
+    <div class="feat">
+      <div class="feat-icon">⏰</div>
       <h3>Scheduled posting</h3>
-      <p>Set your posting times once and Schedulify automatically uploads content at exactly the right moment every day.</p>
+      <p>Set your posting times once and Schedulify automatically uploads content at the right moment — every single day.</p>
     </div>
-    <div class="feature-card">
-      <div class="feature-icon">🔗</div>
+    <div class="feat">
+      <div class="feat-icon">🔐</div>
       <h3>Secure TikTok login</h3>
-      <p>Connect your TikTok account securely using official TikTok Login Kit OAuth. No passwords stored.</p>
+      <p>Connect via official TikTok Login Kit OAuth 2.0. Your TikTok password is never accessed or stored by Schedulify.</p>
     </div>
-    <div class="feature-card">
-      <div class="feature-icon">📋</div>
+    <div class="feat">
+      <div class="feat-icon">✏️</div>
       <h3>Captions and hashtags</h3>
-      <p>Set default captions and hashtags that attach to every post automatically. No more copy-pasting.</p>
+      <p>Set default captions and hashtag sets that automatically attach to every post. No more repetitive copy-pasting.</p>
     </div>
-    <div class="feature-card">
-      <div class="feature-icon">📊</div>
-      <h3>Post history</h3>
-      <p>Full log of every video posted, when it went live, and its current status. Stay in control.</p>
+    <div class="feat">
+      <div class="feat-icon">📋</div>
+      <h3>Full post history</h3>
+      <p>A complete log of every video posted, when it went live, and its current status. Total visibility and control.</p>
     </div>
-    <div class="feature-card">
-      <div class="feature-icon">🔔</div>
-      <h3>Error alerts</h3>
-      <p>Instant email notifications if anything goes wrong so you never miss a scheduled post.</p>
+    <div class="feat">
+      <div class="feat-icon">🔔</div>
+      <h3>Instant error alerts</h3>
+      <p>Get email notifications the moment something goes wrong so you can act fast and never miss a scheduled post.</p>
     </div>
-    <div class="feature-card">
-      <div class="feature-icon">🚀</div>
+    <div class="feat">
+      <div class="feat-icon">🚀</div>
       <h3>Direct publish</h3>
-      <p>Videos publish straight to your profile — no draft step, no manual review needed.</p>
+      <p>Videos go straight to your public TikTok profile — no draft step, no manual review, no extra steps needed.</p>
     </div>
   </div>
 </div>
 
-<div style="background: var(--white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+<div class="divider"></div>
+
+<!-- HOW IT WORKS -->
+<div class="how-bg">
   <div class="section" id="how">
-    <div class="section-label">How it works</div>
-    <h2>Up and running in minutes</h2>
-    <p class="section-sub">No technical knowledge required. Three simple steps to full automation.</p>
+    <div class="section-badge">How it works</div>
+    <h2>Up and running<br>in minutes</h2>
+    <p class="section-sub">No technical experience required. Three easy steps and you're fully automated.</p>
     <div class="steps">
-      <div class="step"><div class="step-num">1</div><h3>Connect your TikTok</h3><p>Log in with TikTok using our secure OAuth integration. Your credentials are never stored.</p></div>
-      <div class="step"><div class="step-num">2</div><h3>Upload your videos</h3><p>Add your video files to your Schedulify queue with captions and hashtags for each post.</p></div>
-      <div class="step"><div class="step-num">3</div><h3>Set your schedule</h3><p>Choose when to post each day. Schedulify runs 24/7 and publishes at exactly the right time.</p></div>
-      <div class="step"><div class="step-num">4</div><h3>Watch it grow</h3><p>Consistent posting drives TikTok growth. Schedulify keeps you consistent without the effort.</p></div>
+      <div class="step">
+        <div class="step-n">1</div>
+        <h3>Create your account</h3>
+        <p>Sign up with your email and create your free Schedulify account in under a minute.</p>
+      </div>
+      <div class="step">
+        <div class="step-n">2</div>
+        <h3>Connect TikTok</h3>
+        <p>Authorize Schedulify to access your TikTok account using the secure official OAuth login flow.</p>
+      </div>
+      <div class="step">
+        <div class="step-n">3</div>
+        <h3>Upload your videos</h3>
+        <p>Add your video files to your posting queue with captions and hashtags for each one.</p>
+      </div>
+      <div class="step">
+        <div class="step-n">4</div>
+        <h3>Set your schedule</h3>
+        <p>Choose when to post each day. Schedulify runs 24/7 and publishes everything on time, automatically.</p>
+      </div>
     </div>
   </div>
 </div>
 
+<div class="divider"></div>
+
+<!-- PRICING -->
 <div class="section" id="pricing">
-  <div class="section-label">Pricing</div>
+  <div class="section-badge">Pricing</div>
   <h2>Simple, transparent pricing</h2>
-  <p class="section-sub">Start free and upgrade as you grow. No hidden fees, cancel any time.</p>
-  <div class="pricing-grid">
+  <p class="section-sub">Start free. Upgrade when you need more. Cancel any time — no questions asked.</p>
+  <div class="plans">
     <div class="plan">
-      <div class="plan-name">Free</div>
+      <div class="plan-tier">Free</div>
       <div class="plan-price">$0</div>
-      <div class="plan-period">forever</div>
-      <ul><li>1 TikTok account</li><li>3 scheduled posts per day</li><li>Basic hashtag templates</li><li>Email notifications</li></ul>
-      <button class="plan-btn" onclick="openModal()">Get started</button>
+      <div class="plan-mo">forever, no card needed</div>
+      <ul class="plan-feats">
+        <li>1 TikTok account</li>
+        <li>3 scheduled posts per day</li>
+        <li>Basic hashtag templates</li>
+        <li>Email notifications</li>
+        <li>Post history (7 days)</li>
+      </ul>
+      <button class="plan-btn" onclick="openModal()">Get started free</button>
     </div>
-    <div class="plan featured">
-      <div class="plan-badge">Most popular</div>
-      <div class="plan-name">Pro</div>
+    <div class="plan pop">
+      <div class="pop-badge">Most popular</div>
+      <div class="plan-tier">Pro</div>
       <div class="plan-price">$9</div>
-      <div class="plan-period">per month</div>
-      <ul><li>3 TikTok accounts</li><li>Unlimited scheduled posts</li><li>Advanced analytics</li><li>Priority support</li><li>Custom posting schedules</li></ul>
+      <div class="plan-mo">per month, billed monthly</div>
+      <ul class="plan-feats">
+        <li>Up to 3 TikTok accounts</li>
+        <li>Unlimited scheduled posts</li>
+        <li>Advanced analytics dashboard</li>
+        <li>Priority email support</li>
+        <li>Custom posting schedules</li>
+        <li>Full post history</li>
+      </ul>
       <button class="plan-btn" onclick="openModal()">Start free trial</button>
     </div>
     <div class="plan">
-      <div class="plan-name">Agency</div>
+      <div class="plan-tier">Agency</div>
       <div class="plan-price">$29</div>
-      <div class="plan-period">per month</div>
-      <ul><li>Unlimited accounts</li><li>Team collaboration</li><li>White label reports</li><li>Dedicated support</li><li>API access</li></ul>
-      <button class="plan-btn" onclick="window.location.href='mailto:developerinfoapplication@gmail.com'">Contact us</button>
+      <div class="plan-mo">per month, billed monthly</div>
+      <ul class="plan-feats">
+        <li>Unlimited TikTok accounts</li>
+        <li>Team collaboration tools</li>
+        <li>White-label reporting</li>
+        <li>Dedicated account manager</li>
+        <li>API access</li>
+        <li>SLA guarantee</li>
+      </ul>
+      <button class="plan-btn" onclick="window.location.href='mailto:developerinfoapplication@gmail.com?subject=Agency Plan Inquiry'">Contact us</button>
     </div>
   </div>
 </div>
 
+<!-- CTA BAND -->
+<div class="cta-band">
+  <h2>Ready to automate your TikTok?</h2>
+  <p>Join creators who never miss a posting time. Get started in under 2 minutes.</p>
+  <button class="btn btn-white" onclick="openModal()">Create your free account →</button>
+</div>
+
+<!-- FOOTER -->
 <footer>
-  <a href="index.html" class="logo">Schedulify<span>.</span></a>
-  <p>© 2026 Schedulify. Helping creators post consistently and automatically.</p>
+  <a href="index.html" class="footer-logo">Schedulify<b>.</b></a>
+  <p>© 2026 Schedulify. All rights reserved.</p>
   <div class="footer-links">
     <a href="terms.html">Terms of Service</a>
     <a href="privacy.html">Privacy Policy</a>
@@ -246,73 +493,99 @@
   </div>
 </footer>
 
-<!-- SIGNUP MODAL -->
-<div class="modal-overlay" id="signupModal" onclick="handleOverlayClick(event)">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal()">✕</button>
-    <h3>Get started free</h3>
-    <p>Join Schedulify and start automating your TikTok posting today. No credit card required.</p>
-    <div id="signupForm">
-      <div class="form-group">
-        <label for="firstName">First name</label>
-        <input type="text" id="firstName" placeholder="Your first name" required />
+<!-- MODAL -->
+<div class="overlay" id="overlay">
+  <div class="modal" id="modal">
+    <button class="modal-x" id="closeBtn" aria-label="Close">✕</button>
+    <div class="modal-logo">Schedulify<b>.</b></div>
+    <h3>Create your free account</h3>
+    <p class="sub">Start automating your TikTok posting in minutes. No credit card required.</p>
+    <div id="formWrap">
+      <div class="field">
+        <label for="fn">First name</label>
+        <input type="text" id="fn" placeholder="Your first name" autocomplete="given-name" />
       </div>
-      <div class="form-group">
-        <label for="email">Email address</label>
-        <input type="email" id="email" placeholder="you@example.com" required />
+      <div class="field">
+        <label for="em">Email address</label>
+        <input type="email" id="em" placeholder="you@example.com" autocomplete="email" />
       </div>
-      <div class="form-group">
-        <label for="tiktokHandle">TikTok username</label>
-        <input type="text" id="tiktokHandle" placeholder="@yourhandle" />
+      <div class="field">
+        <label for="tk">TikTok username <span style="color:var(--muted);font-weight:400">(optional)</span></label>
+        <input type="text" id="tk" placeholder="@yourhandle" />
       </div>
-      <button class="form-submit" onclick="handleSignup()">Create free account</button>
-      <div class="success-msg" id="successMsg">
-        ✓ You're on the list! We'll be in touch soon.
+      <button class="modal-btn" id="submitBtn" onclick="doSignup()">Create free account</button>
+      <div class="success" id="successBox">
+        <p>🎉 You're on the list! We'll be in touch soon.</p>
       </div>
-      <p class="modal-terms">By signing up you agree to our <a href="terms.html">Terms of Service</a> and <a href="privacy.html">Privacy Policy</a>.</p>
+      <p class="modal-note">By signing up you agree to our <a href="terms.html">Terms of Service</a> and <a href="privacy.html">Privacy Policy</a>.</p>
     </div>
   </div>
 </div>
 
 <script>
+  var overlay = document.getElementById('overlay');
+
   function openModal() {
-    document.getElementById('signupModal').classList.add('active');
+    overlay.classList.add('on');
     document.body.style.overflow = 'hidden';
+    setTimeout(function(){ document.getElementById('fn').focus(); }, 200);
   }
 
   function closeModal() {
-    document.getElementById('signupModal').classList.remove('active');
+    overlay.classList.remove('on');
     document.body.style.overflow = '';
   }
 
-  function handleOverlayClick(e) {
-    if (e.target === document.getElementById('signupModal')) closeModal();
-  }
+  document.getElementById('closeBtn').addEventListener('click', closeModal);
+  document.getElementById('navCta').addEventListener('click', function(e){ e.preventDefault(); openModal(); });
+  document.getElementById('heroCta').addEventListener('click', openModal);
 
-  function handleSignup() {
-    const firstName = document.getElementById('firstName').value.trim();
-    const email = document.getElementById('email').value.trim();
+  overlay.addEventListener('click', function(e){
+    if (e.target === overlay) closeModal();
+  });
 
-    if (!firstName) { alert('Please enter your first name.'); return; }
-    if (!email || !email.includes('@')) { alert('Please enter a valid email address.'); return; }
-
-    const btn = document.querySelector('.form-submit');
-    btn.disabled = true;
-    btn.textContent = 'Signing you up...';
-
-    setTimeout(() => {
-      document.getElementById('successMsg').classList.add('show');
-      btn.style.display = 'none';
-      document.getElementById('firstName').disabled = true;
-      document.getElementById('email').disabled = true;
-      document.getElementById('tiktokHandle').disabled = true;
-    }, 1000);
-  }
-
-  document.addEventListener('keydown', function(e) {
+  document.addEventListener('keydown', function(e){
     if (e.key === 'Escape') closeModal();
   });
-</script>
 
+  function doSignup() {
+    var fn = document.getElementById('fn').value.trim();
+    var em = document.getElementById('em').value.trim();
+    var btn = document.getElementById('submitBtn');
+    var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!fn) { shake('fn'); return; }
+    if (!em || !emailRe.test(em)) { shake('em'); return; }
+
+    btn.disabled = true;
+    btn.textContent = 'Creating account…';
+
+    setTimeout(function(){
+      document.getElementById('successBox').classList.add('on');
+      btn.style.display = 'none';
+      document.getElementById('fn').disabled = true;
+      document.getElementById('em').disabled = true;
+      document.getElementById('tk').disabled = true;
+    }, 900);
+  }
+
+  function shake(id) {
+    var el = document.getElementById(id);
+    el.style.borderColor = '#ef4444';
+    el.style.boxShadow = '0 0 0 3px rgba(239,68,68,.15)';
+    el.focus();
+    setTimeout(function(){ el.style.borderColor = ''; el.style.boxShadow = ''; }, 1800);
+  }
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var href = this.getAttribute('href');
+      if (href === '#') return;
+      var target = document.querySelector(href);
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+</script>
 </body>
 </html>
