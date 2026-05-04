@@ -17,42 +17,60 @@
     --text: #0f172a;
     --muted: #64748b;
     --border: #e2e8f0;
+    --success: #22c55e;
   }
   body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.6; }
+
+  /* NAV */
   nav { display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 5rem; background: var(--white); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
-  .logo { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 1.3rem; color: var(--text); letter-spacing: -0.5px; }
+  .logo { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 1.3rem; color: var(--text); letter-spacing: -0.5px; text-decoration: none; }
   .logo span { color: var(--blue); }
-  nav ul { display: flex; gap: 2.5rem; list-style: none; }
+  nav ul { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
   nav a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
   nav a:hover { color: var(--text); }
   .nav-cta { background: var(--blue) !important; color: white !important; padding: 0.5rem 1.25rem; border-radius: 8px; font-weight: 500; }
+  .nav-cta:hover { background: var(--blue-dark) !important; }
+
+  /* HERO */
   .hero { text-align: center; padding: 6rem 2rem 5rem; max-width: 700px; margin: 0 auto; }
   .badge { display: inline-block; background: var(--blue-light); color: var(--blue-dark); border: 1px solid var(--blue-mid); padding: 0.3rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 500; margin-bottom: 1.75rem; }
   h1 { font-family: 'Bricolage Grotesque', sans-serif; font-size: clamp(2.2rem, 5vw, 3.6rem); font-weight: 700; line-height: 1.1; letter-spacing: -1.5px; margin-bottom: 1.25rem; }
   h1 span { color: var(--blue); }
   .hero-sub { font-size: 1.05rem; color: var(--muted); max-width: 460px; margin: 0 auto 2.5rem; line-height: 1.7; }
   .hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-  .btn-primary { background: var(--blue); color: white; padding: 0.8rem 2rem; border-radius: 8px; font-size: 0.95rem; font-weight: 500; text-decoration: none; transition: background 0.2s, transform 0.2s; }
+
+  /* BUTTONS */
+  .btn-primary { background: var(--blue); color: white; padding: 0.8rem 2rem; border-radius: 8px; font-size: 0.95rem; font-weight: 500; text-decoration: none; transition: background 0.2s, transform 0.2s; cursor: pointer; border: none; font-family: 'Inter', sans-serif; display: inline-block; }
   .btn-primary:hover { background: var(--blue-dark); transform: translateY(-1px); }
-  .btn-ghost { background: var(--white); color: var(--text); padding: 0.8rem 2rem; border-radius: 8px; font-size: 0.95rem; font-weight: 500; text-decoration: none; border: 1px solid var(--border); transition: border-color 0.2s, color 0.2s; }
+  .btn-ghost { background: var(--white); color: var(--text); padding: 0.8rem 2rem; border-radius: 8px; font-size: 0.95rem; font-weight: 500; text-decoration: none; border: 1px solid var(--border); transition: border-color 0.2s, color 0.2s; display: inline-block; }
   .btn-ghost:hover { border-color: var(--blue); color: var(--blue); }
+
+  /* STATS */
   .stats { display: flex; justify-content: center; gap: 4rem; padding: 3rem 2rem; background: var(--white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); flex-wrap: wrap; }
   .stat-num { font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.9rem; font-weight: 700; color: var(--blue); }
   .stat-label { font-size: 0.85rem; color: var(--muted); margin-top: 0.2rem; }
+
+  /* SECTIONS */
   .section { padding: 5rem; max-width: 1080px; margin: 0 auto; }
   .section-label { font-size: 0.75rem; font-weight: 600; color: var(--blue); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.75rem; }
   h2 { font-family: 'Bricolage Grotesque', sans-serif; font-size: clamp(1.6rem, 3vw, 2.3rem); font-weight: 700; letter-spacing: -0.75px; line-height: 1.15; margin-bottom: 0.75rem; }
   .section-sub { color: var(--muted); font-size: 1rem; max-width: 460px; margin-bottom: 3rem; line-height: 1.7; }
+
+  /* FEATURES */
   .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; }
   .feature-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 1.75rem; transition: border-color 0.2s, transform 0.2s; }
   .feature-card:hover { border-color: var(--blue); transform: translateY(-2px); }
   .feature-icon { width: 36px; height: 36px; border-radius: 8px; background: var(--blue-light); display: flex; align-items: center; justify-content: center; font-size: 16px; margin-bottom: 1rem; }
   .feature-card h3 { font-family: 'Bricolage Grotesque', sans-serif; font-size: 0.95rem; font-weight: 600; margin-bottom: 0.4rem; }
   .feature-card p { font-size: 0.875rem; color: var(--muted); line-height: 1.6; }
+
+  /* STEPS */
   .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 3rem; }
   .step-num { font-family: 'Bricolage Grotesque', sans-serif; font-size: 0.8rem; font-weight: 600; color: var(--blue); background: var(--blue-light); width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
   .step h3 { font-family: 'Bricolage Grotesque', sans-serif; font-size: 0.95rem; font-weight: 600; margin-bottom: 0.4rem; }
   .step p { font-size: 0.875rem; color: var(--muted); line-height: 1.6; }
+
+  /* PRICING */
   .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
   .plan { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; position: relative; }
   .plan.featured { border: 2px solid var(--blue); }
@@ -63,15 +81,39 @@
   .plan ul { list-style: none; margin-bottom: 1.5rem; }
   .plan ul li { font-size: 0.875rem; color: var(--muted); padding: 0.4rem 0; border-bottom: 1px solid var(--border); display: flex; gap: 0.5rem; align-items: center; }
   .plan ul li::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--blue); flex-shrink: 0; }
-  .plan-btn { display: block; text-align: center; padding: 0.7rem; border-radius: 8px; font-size: 0.9rem; font-weight: 500; text-decoration: none; border: 1px solid var(--border); color: var(--text); transition: all 0.2s; }
+  .plan-btn { display: block; text-align: center; padding: 0.7rem; border-radius: 8px; font-size: 0.9rem; font-weight: 500; text-decoration: none; border: 1px solid var(--border); color: var(--text); transition: all 0.2s; cursor: pointer; background: var(--white); font-family: 'Inter', sans-serif; width: 100%; }
   .plan.featured .plan-btn { background: var(--blue); color: white; border-color: var(--blue); }
   .plan-btn:hover { border-color: var(--blue); color: var(--blue); }
   .plan.featured .plan-btn:hover { background: var(--blue-dark); color: white; }
+
+  /* FOOTER */
   footer { background: var(--white); border-top: 1px solid var(--border); padding: 2rem 5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
   footer p { font-size: 0.85rem; color: var(--muted); }
   .footer-links { display: flex; gap: 2rem; }
   footer a { font-size: 0.85rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
   footer a:hover { color: var(--blue); }
+
+  /* MODAL */
+  .modal-overlay { position: fixed; inset: 0; background: rgba(15,23,42,0.5); z-index: 999; display: flex; align-items: center; justify-content: center; padding: 1rem; opacity: 0; visibility: hidden; transition: opacity 0.2s, visibility 0.2s; }
+  .modal-overlay.active { opacity: 1; visibility: visible; }
+  .modal { background: var(--white); border-radius: 16px; padding: 2.5rem; max-width: 420px; width: 100%; position: relative; transform: translateY(20px); transition: transform 0.2s; }
+  .modal-overlay.active .modal { transform: translateY(0); }
+  .modal-close { position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 1.2rem; color: var(--muted); cursor: pointer; padding: 0.25rem; line-height: 1; }
+  .modal-close:hover { color: var(--text); }
+  .modal h3 { font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.4rem; font-weight: 700; margin-bottom: 0.5rem; letter-spacing: -0.5px; }
+  .modal p { font-size: 0.9rem; color: var(--muted); margin-bottom: 1.5rem; line-height: 1.6; }
+  .form-group { margin-bottom: 1rem; }
+  .form-group label { display: block; font-size: 0.85rem; font-weight: 500; margin-bottom: 0.4rem; color: var(--text); }
+  .form-group input { width: 100%; padding: 0.7rem 1rem; border: 1px solid var(--border); border-radius: 8px; font-size: 0.9rem; font-family: 'Inter', sans-serif; color: var(--text); transition: border-color 0.2s; outline: none; }
+  .form-group input:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(59,130,246,0.1); }
+  .form-submit { width: 100%; padding: 0.8rem; background: var(--blue); color: white; border: none; border-radius: 8px; font-size: 0.95rem; font-weight: 500; cursor: pointer; font-family: 'Inter', sans-serif; transition: background 0.2s; margin-top: 0.5rem; }
+  .form-submit:hover { background: var(--blue-dark); }
+  .form-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+  .success-msg { display: none; text-align: center; padding: 1rem; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; color: #15803d; font-size: 0.9rem; margin-top: 1rem; }
+  .success-msg.show { display: block; }
+  .modal-terms { font-size: 0.75rem; color: var(--muted); text-align: center; margin-top: 1rem; line-height: 1.5; }
+  .modal-terms a { color: var(--blue); text-decoration: none; }
+
   @media (max-width: 768px) {
     nav { padding: 1rem 1.5rem; }
     nav ul { display: none; }
@@ -85,12 +127,13 @@
 <body>
 
 <nav>
-  <div class="logo">Schedulify<span>.</span></div>
+  <a href="index.html" class="logo">Schedulify<span>.</span></a>
   <ul>
     <li><a href="#features">Features</a></li>
     <li><a href="#how">How it works</a></li>
     <li><a href="#pricing">Pricing</a></li>
-    <li><a href="#" class="nav-cta">Get started</a></li>
+    <li><a href="mailto:developerinfoapplication@gmail.com">Contact</a></li>
+    <li><a href="#" class="nav-cta" onclick="openModal(); return false;">Get started</a></li>
   </ul>
 </nav>
 
@@ -99,7 +142,7 @@
   <h1>Schedule your TikTok posts <span>automatically</span></h1>
   <p class="hero-sub">Connect your TikTok account and let Schedulify handle your posting schedule. Set it once, run forever.</p>
   <div class="hero-actions">
-    <a href="#" class="btn-primary">Get started free</a>
+    <button class="btn-primary" onclick="openModal()">Get started free</button>
     <a href="#how" class="btn-ghost">See how it works</a>
   </div>
 </div>
@@ -173,7 +216,7 @@
       <div class="plan-price">$0</div>
       <div class="plan-period">forever</div>
       <ul><li>1 TikTok account</li><li>3 scheduled posts per day</li><li>Basic hashtag templates</li><li>Email notifications</li></ul>
-      <a href="#" class="plan-btn">Get started</a>
+      <button class="plan-btn" onclick="openModal()">Get started</button>
     </div>
     <div class="plan featured">
       <div class="plan-badge">Most popular</div>
@@ -181,27 +224,95 @@
       <div class="plan-price">$9</div>
       <div class="plan-period">per month</div>
       <ul><li>3 TikTok accounts</li><li>Unlimited scheduled posts</li><li>Advanced analytics</li><li>Priority support</li><li>Custom posting schedules</li></ul>
-      <a href="#" class="plan-btn">Start free trial</a>
+      <button class="plan-btn" onclick="openModal()">Start free trial</button>
     </div>
     <div class="plan">
       <div class="plan-name">Agency</div>
       <div class="plan-price">$29</div>
       <div class="plan-period">per month</div>
       <ul><li>Unlimited accounts</li><li>Team collaboration</li><li>White label reports</li><li>Dedicated support</li><li>API access</li></ul>
-      <a href="#" class="plan-btn">Contact us</a>
+      <button class="plan-btn" onclick="window.location.href='mailto:developerinfoapplication@gmail.com'">Contact us</button>
     </div>
   </div>
 </div>
 
 <footer>
-  <div class="logo">Schedulify<span>.</span></div>
-  <p>Helping creators post consistently and automatically.</p>
+  <a href="index.html" class="logo">Schedulify<span>.</span></a>
+  <p>© 2026 Schedulify. Helping creators post consistently and automatically.</p>
   <div class="footer-links">
     <a href="terms.html">Terms of Service</a>
     <a href="privacy.html">Privacy Policy</a>
-    <a href="#">Contact</a>
+    <a href="mailto:developerinfoapplication@gmail.com">Contact</a>
   </div>
 </footer>
+
+<!-- SIGNUP MODAL -->
+<div class="modal-overlay" id="signupModal" onclick="handleOverlayClick(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <h3>Get started free</h3>
+    <p>Join Schedulify and start automating your TikTok posting today. No credit card required.</p>
+    <div id="signupForm">
+      <div class="form-group">
+        <label for="firstName">First name</label>
+        <input type="text" id="firstName" placeholder="Your first name" required />
+      </div>
+      <div class="form-group">
+        <label for="email">Email address</label>
+        <input type="email" id="email" placeholder="you@example.com" required />
+      </div>
+      <div class="form-group">
+        <label for="tiktokHandle">TikTok username</label>
+        <input type="text" id="tiktokHandle" placeholder="@yourhandle" />
+      </div>
+      <button class="form-submit" onclick="handleSignup()">Create free account</button>
+      <div class="success-msg" id="successMsg">
+        ✓ You're on the list! We'll be in touch soon.
+      </div>
+      <p class="modal-terms">By signing up you agree to our <a href="terms.html">Terms of Service</a> and <a href="privacy.html">Privacy Policy</a>.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  function openModal() {
+    document.getElementById('signupModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    document.getElementById('signupModal').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function handleOverlayClick(e) {
+    if (e.target === document.getElementById('signupModal')) closeModal();
+  }
+
+  function handleSignup() {
+    const firstName = document.getElementById('firstName').value.trim();
+    const email = document.getElementById('email').value.trim();
+
+    if (!firstName) { alert('Please enter your first name.'); return; }
+    if (!email || !email.includes('@')) { alert('Please enter a valid email address.'); return; }
+
+    const btn = document.querySelector('.form-submit');
+    btn.disabled = true;
+    btn.textContent = 'Signing you up...';
+
+    setTimeout(() => {
+      document.getElementById('successMsg').classList.add('show');
+      btn.style.display = 'none';
+      document.getElementById('firstName').disabled = true;
+      document.getElementById('email').disabled = true;
+      document.getElementById('tiktokHandle').disabled = true;
+    }, 1000);
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeModal();
+  });
+</script>
 
 </body>
 </html>
